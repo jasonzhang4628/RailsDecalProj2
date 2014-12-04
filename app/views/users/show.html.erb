@@ -1,4 +1,6 @@
 <h3><%= @user.name if @user.name%></h3>
 <p><img src="<%=@user.imglink if @user.imglink%>" height="200" width="200"></p>
+<% if @user==current_user %>
 <%= button_to "Change Picture", image_path, :class => "button medium", :method => :get %>
+<%end%>
 <p>Email: <%= @user.email if @user.email and @user==current_user %></p>
