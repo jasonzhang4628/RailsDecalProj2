@@ -6,13 +6,14 @@ class UsersController < ApplicationController
   end
 
   def image
-    @user=current_user
+    @user = current_user
   end
 
   def addimage
-    @user.imglink = params[:imglink]
+    @user = current_user
+    @user.imglink = params[:user][:imglink]
     @user.save
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(@user.id)
   end
 
   def show
