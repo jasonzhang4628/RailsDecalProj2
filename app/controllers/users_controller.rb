@@ -5,11 +5,18 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def image
+    @user=current_user
+  end
+
+  def addimage
+    @user.imglink = params[:imglink]
+    @user.save
+    redirect_to user_path(current_user.id)
+  end
+
   def show
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to :back, :alert => "Access denied."
-    end
   end
 
 end
