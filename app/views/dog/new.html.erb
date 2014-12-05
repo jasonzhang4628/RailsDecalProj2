@@ -1,0 +1,7 @@
+<%= simple_form_for Dog.new, :url => newdog_path do |f| %>
+  <%= f.input :imglink %>
+  <%= f.input :name %>
+  <%= f.input :breed %>
+  <%= f.button :submit %>
+<% end %>
+

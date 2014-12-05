@@ -2,5 +2,16 @@
 <p><img src="<%=@user.imglink if @user.imglink%>" height="200" width="200"></p>
 <% if @user==current_user %>
 <%= button_to "Change Picture", image_path, :class => "button medium", :method => :get %>
+<%= button_to "Add Dog", adddog_path, :class => "button medium", :method => :get %>
+<%end%>
+<% if current_user and @user != current_user %>
+  <%= button_to "Send Private Message", message_path, :class => "button medium", :method => :get%>
 <%end%>
 <p>Email: <%= @user.email if @user.email and @user==current_user %></p>
+<h4> Dogs: </h4>
+  <ul>
+    <% @user.dog.each do |dog| %>
+      <li><%= dog.name %> <p>Breed: <%= dog.breed %></p> 
+      <p><img src="<%= dog.imglink%>" height="200" width="200">
+       <% end %></p>
+  <ul>
